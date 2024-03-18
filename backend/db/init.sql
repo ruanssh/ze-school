@@ -1,0 +1,31 @@
+CREATE DATABASE IF NOT EXISTS school;
+
+USE school;
+
+CREATE TABLE IF NOT EXISTS Student (
+  id int NOT NULL AUTO_INCREMENT,
+  matricula int NOT NULL,
+  nome varchar(100) NOT NULL,
+  dt_nasc date NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE IF NOT EXISTS Subject (
+  id int NOT NULL AUTO_INCREMENT,
+  nome varchar(100) DEFAULT NULL,
+  id_teacher int NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE IF NOT EXISTS Subject_Student (
+  id int NOT NULL AUTO_INCREMENT,
+  id_student int NOT NULL,
+  id_teacher int NOT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE IF NOT EXISTS Teacher (
+  id int NOT NULL AUTO_INCREMENT,
+  nome varchar(100) DEFAULT NULL,
+  PRIMARY KEY (id)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
