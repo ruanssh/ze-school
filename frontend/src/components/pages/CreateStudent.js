@@ -9,21 +9,27 @@ import { DatePicker, Button, Form, Input, Card  } from 'antd';
 import Modal from "../layout/Modal";
 
 import { useState } from "react";
+
+import { useNavigate } from "react-router-dom";
 export default function CreateStudent()
 {
     const [form] = Form.useForm()
-
+    const navigate = useNavigate();
     const [isModalOpen, setIsModalOpen] = useState(false);
 
+    const backTo = () =>{
+        navigate(-1)
+    }
     const showModal = () => {
     setIsModalOpen(true);
     };
     const handleOk = () => {
     setIsModalOpen(false);
-
+    navigate('/Students')
     };
     const handleCancel = () => {
     setIsModalOpen(false);
+    navigate('/Students')
     };
 
     const [date, setDate] = useState(true);
@@ -102,16 +108,14 @@ export default function CreateStudent()
                         >
                         <DatePicker onChange={onChangeDate}   style={{ width: '100%' }}   inputReadOnly />
                         </Form.Item>
-                        <Form.Item
-      wrapperCol={{
-        offset: 8,
-        span: 16,
-      }}
-    >
-      <Button type="primary" htmlType="submit">
-        Cadastrar
-      </Button>
-    </Form.Item>
+                        <Form.Item  wrapperCol={{     offset: 8,       span: 16,  }}>
+                        <Button onClick={backTo}>
+                            Voltar
+                        </Button>
+                        <Button type="primary" htmlType="submit">
+                            Cadastrar
+                        </Button>
+                        </Form.Item>
                 </Form> 
                 </Card>
             </WrapperCenter>

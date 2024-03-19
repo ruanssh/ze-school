@@ -3,6 +3,10 @@ from flask import request, jsonify
 from model.createStudent import Student
 from model.createTeacher import Teacher
 from model.createSubject import Subject
+from model.ViewStudents import ViewStudents
+
+
+# create models
 
 def createStudentControl():
     # get info
@@ -35,3 +39,12 @@ def createSubjectControl():
     Subject(subject_name, id_teacher).CreateNewSubject()
 
     return jsonify({"mensagem": "Materia criada com sucesso"}), 201
+
+# read modells
+
+def viewAllStudents():
+    # Chame ViewAllStudents para obter os dados dos alunos
+    students_data = ViewStudents().ViewAllStudents()
+
+    # Retorne os dados dos alunos em formato JSON
+    return jsonify({"students": students_data}), 201

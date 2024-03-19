@@ -28,3 +28,5 @@ class Student:
                 db_connection.close()
         else:
             print("Não há conexão com o banco de dados.")
+    def EditStudent(self):
+        pass
