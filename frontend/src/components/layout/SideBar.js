@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import { Layout, Menu } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom'; // Importa o hook useNavigate
 
 const { Sider, Content } = Layout;
 
 const SideBar = (props) => {
-  const [collapsed, setCollapsed] = useState(true); // Inicialmente, colapsado em dispositivos móveis
+  const [collapsed, setCollapsed] = useState(true);
+  const navigate = useNavigate(); // Obtém a função de navegação
 
   const toggleCollapsed = () => {
     setCollapsed(!collapsed);
@@ -13,14 +15,15 @@ const SideBar = (props) => {
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
-      <Sider collapsible collapsed={collapsed} onCollapse={toggleCollapsed} collapsedWidth={0} breakpoint="md">
+      <Sider collapsible collapsedWidth={0} breakpoint="md">
         <div className="logo">
           <h3 style={{ color: 'white', textAlign: 'center', marginTop: '16px' }}>Escolinha do Zé</h3>
         </div>
         <Menu theme="dark" defaultSelectedKeys={[props.page]} mode="inline">
-          <Menu.Item key="1">Inícios</Menu.Item>
-          <Menu.Item key="2">Alunos</Menu.Item>
-          <Menu.Item key="3">Matérias</Menu.Item>
+          <Menu.Item key="1" onClick={() => navigate("/")}>Inícios</Menu.Item>
+          <Menu.Item key="2" onClick={() => navigate("/Students")}>Alunos</Menu.Item>
+          <Menu.Item key="4" onClick={() => navigate("/Teachers")}>Professores</Menu.Item>
+          <Menu.Item key="3" onClick={() => navigate("/")}>Matérias</Menu.Item>
         </Menu>
       </Sider>
       <Layout className="site-layout">

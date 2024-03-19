@@ -1,9 +1,8 @@
 # controllers/main_controller.py
 from flask import request, jsonify
-from model.createStudent import Student
-from model.createTeacher import Teacher
-from model.createSubject import Subject
-from model.ViewStudents import ViewStudents
+from model.Student import Student
+from model.Teacher import Teacher
+from model.Subject import Subject
 
 
 # create models
@@ -13,11 +12,10 @@ def createStudentControl():
     data = request.json
     
     name = data.get('name') 
-    student_id = data.get('student_id') 
     birthdate = data.get('birthdate') 
 
     # Criando o estudante
-    Student(name, birthdate, student_id).CreateNewStudent()
+    Student(name, birthdate).CreateNewStudent()
 
     return jsonify({"mensagem": "Estudante criado com sucesso"}), 201
 
@@ -43,6 +41,11 @@ def createSubjectControl():
 # read modells
 
 def viewAllStudents():
-    students_data = ViewStudents().ViewAllStudents()
+    students_data = Student().ViewAllStudents()
 
     return jsonify({"students": students_data}), 201
+
+def viewAllTeachers():
+    teachers_data = Teacher().ViewAllTeachers()
+
+    return jsonify({"teachers": teachers_data}), 201

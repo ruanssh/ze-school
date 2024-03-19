@@ -1,17 +1,18 @@
-import WrapperCenter from "../layout/WrapperCenter";
+import WrapperCenter from "../../layout/WrapperCenter";
 
-import SideBar from "../layout/SideBar"
+import SideBar from "../../layout/SideBar"
 
-import styles from './CreateStudent.module.css'
+import styles from './CreateTeacher.module.css'
 
-import { DatePicker, Button, Form, Input, Card  } from 'antd';
+import { Button, Form, Input, Card  } from 'antd';
 
-import Modal from "../layout/Modal";
+import Modal from "../../layout/Modal";
 
 import { useState } from "react";
 
 import { useNavigate } from "react-router-dom";
-export default function CreateStudent()
+
+export default function CreateTeacher()
 {
     const [form] = Form.useForm()
     const navigate = useNavigate();
@@ -25,17 +26,11 @@ export default function CreateStudent()
     };
     const handleOk = () => {
     setIsModalOpen(false);
-    navigate('/Students')
+    navigate('/Teachers')
     };
     const handleCancel = () => {
     setIsModalOpen(false);
-    navigate('/Students')
-    };
-
-    const [date, setDate] = useState(true);
-    
-    const onChangeDate = (date, dateString) => {
-        setDate(dateString);
+    navigate('/Teachers')
     };
 
     const onFinish = (values) => {
@@ -44,7 +39,6 @@ export default function CreateStudent()
 
         const raw = JSON.stringify({
             "name": values.name,
-            "birthdate": date
         });
 
         const requestOptions = {
@@ -56,7 +50,7 @@ export default function CreateStudent()
 
 
         try {
-            fetch("http://127.0.0.1:5000/createStudent", requestOptions)
+            fetch("http://127.0.0.1:5000/createTeacher", requestOptions)
             showModal()
             form.resetFields();
           } 
@@ -67,11 +61,10 @@ export default function CreateStudent()
 
     return(
         <>  
-            <Modal isModalOpen={isModalOpen} handleOk={handleOk} handleCancel={handleCancel} Tittle={'Sucesso'} Text='Aluno cadastrado com sucesso.' />
-
-            <SideBar page='2'>
+            <Modal isModalOpen={isModalOpen} handleOk={handleOk} handleCancel={handleCancel} Tittle={'Sucesso'} Text='Professor cadastrado com sucesso.' />
+            <SideBar page='4'>
             <WrapperCenter>
-                <Card className={styles.card} title="Cadastrar Aluno">
+                <Card className={styles.card} title="Cadastrar Professor">
                     <Form
                     name="basic"
                     labelCol={{span: 8,}}
@@ -82,30 +75,17 @@ export default function CreateStudent()
                     autoComplete="off"
                     >
                         <Form.Item
-                            label="Nome do aluno"
+                            label="Nome do Professor"
                             name="name"
                             rules={[
                                 {
                                 required: true,
-                                message: 'Escreva seu nome!',
+                                message: 'Escreva o nome!',
                                 },
                             ]}
                             >
                         <Input />
 
-                        </Form.Item>
-
-                        <Form.Item
-                            label="Data de Nascimento"
-                            name="date"
-                            rules={[
-                                {
-                                required: true,
-                                message: 'Por favor coloque uma data!',
-                                },
-                            ]}
-                        >
-                        <DatePicker onChange={onChangeDate}   style={{ width: '100%' }}   inputReadOnly />
                         </Form.Item>
                         <Form.Item  wrapperCol={{     offset: 8,       span: 16,  }}>
                         <Button onClick={backTo}>
