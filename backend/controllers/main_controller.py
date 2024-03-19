@@ -43,8 +43,6 @@ def createSubjectControl():
 # read modells
 
 def viewAllStudents():
-    # Chame ViewAllStudents para obter os dados dos alunos
     students_data = ViewStudents().ViewAllStudents()
 
-    # Retorne os dados dos alunos em formato JSON
     return jsonify({"students": students_data}), 201
