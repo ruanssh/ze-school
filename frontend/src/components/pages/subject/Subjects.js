@@ -8,35 +8,36 @@ import { useNavigate } from 'react-router-dom';
 
 import styles from "../../layout/Datagrid.module.css"
 
-export default function Teachers()
+export default function Subjects()
 {
     const [data, setData] = useState([])
     let navigate = useNavigate()
     
     const goToCreate = () => {
-        navigate('/CreateTeacher');
+        navigate('/CreateSubject');
     };
-    const fetchAllTeachers = async () => {
+    const fetchAllSubjects = async () => {
         try {
-          const response = await fetch(`http://localhost:5000/teachers`);
+          const response = await fetch(`http://localhost:5000/subjects`);
           if (!response.ok) {
             throw new Error(`Erro na solicitação: ${response.statusText}`);
           }
           const response_data = await response.json();
-          setData(response_data["teachers"])
+          setData(response_data["subjects"])
       
         } catch (error) {
           console.error('Erro ao buscar dados da API:', error);
         }
-    };
+      };
 
     useEffect(() => {
-      fetchAllTeachers();
+      fetchAllSubjects();
     }, []); 
-
     const dataSource = data.map((item, index) => ({
         index: index + 1,
-        name: item.nome,
+        subject_name: item.subject_name,
+        teacher_name: item.teacher_name,
+
     }));
     const columns = [
     {
@@ -45,23 +46,28 @@ export default function Teachers()
         key: 'index',
       },
       {
-        title: 'Nome',
-        dataIndex: 'name',
-        key: 'name',
+        title: 'Materia',
+        dataIndex: 'subject_name',
+        key: 'subject_name',
+      },
+      {
+        title: 'Professor',
+        dataIndex: 'teacher_name',
+        key: 'teacher_name',
       },
     ];
     return(
-        <>
-        <SideBar page='4' >
-            <Row justify="end">
-                <Col style={{ margin: '10px' }}>
-                    <Button onClick={goToCreate} type="primary" icon={<PlusCircleOutlined />}>Adicionar Professor</Button>
-                </Col>
-            </Row>
-            <WrapperCenter>
-                 <Table className={styles.tableWW} columns={columns} dataSource={dataSource} />
-            </WrapperCenter>
-        </SideBar>
-        </>
+      <>
+      <SideBar page='3' >
+          <Row justify="end">
+              <Col style={{ margin: '10px' }}>
+                  <Button onClick={goToCreate} type="primary" icon={<PlusCircleOutlined />}>Adicionar Materia</Button>
+              </Col>
+          </Row>
+          <WrapperCenter>
+               <Table className={styles.tableWW} columns={columns} dataSource={dataSource} />
+          </WrapperCenter>
+      </SideBar>
+      </>
     )
 }

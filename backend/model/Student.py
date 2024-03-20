@@ -61,5 +61,5 @@ class Student:
         else:
             print("Não há conexão com o banco de dados.")
         
-    def EditStudent(self):
+    def AddSubject(self):
         pass

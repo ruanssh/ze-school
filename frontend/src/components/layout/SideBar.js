@@ -3,15 +3,11 @@ import { Layout, Menu } from 'antd';
 import { MenuOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom'; // Importa o hook useNavigate
 
-const { Sider, Content } = Layout;
+const { Sider } = Layout;
 
 const SideBar = (props) => {
   const [collapsed, setCollapsed] = useState(true);
   const navigate = useNavigate(); // Obtém a função de navegação
-
-  const toggleCollapsed = () => {
-    setCollapsed(!collapsed);
-  };
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -23,7 +19,7 @@ const SideBar = (props) => {
           <Menu.Item key="1" onClick={() => navigate("/")}>Inícios</Menu.Item>
           <Menu.Item key="2" onClick={() => navigate("/Students")}>Alunos</Menu.Item>
           <Menu.Item key="4" onClick={() => navigate("/Teachers")}>Professores</Menu.Item>
-          <Menu.Item key="3" onClick={() => navigate("/")}>Matérias</Menu.Item>
+          <Menu.Item key="3" onClick={() => navigate("/Subjects")}>Matérias</Menu.Item>
         </Menu>
       </Sider>
       <Layout className="site-layout">

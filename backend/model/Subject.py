@@ -2,7 +2,7 @@ from model.db import DatabaseConnection
 import mysql.connector
 
 class Subject:
-    def __init__(self, subject_name, id_teacher):
+    def __init__(self, subject_name=None, id_teacher=None):
         self.subject_name = subject_name
         self.id_teacher = id_teacher
         
@@ -27,6 +27,35 @@ class Subject:
         else:
             print("Não há conexão com o banco de dados.")
     
-    def AddNewTeacher(self, id_teacher):
-        pass
+    @staticmethod
+    def ViewAllSubjects():
+        db_connection = DatabaseConnection()
+        if db_connection.conn is not None:
+            try:
+                cursor = db_connection.conn.cursor()
+
+                sql = "SELECT sb.id, sb.nome, tc.nome FROM school.Subject sb, school.Teacher as tc where tc.id = sb.id_teacher;"
+                cursor.execute(sql)
+                
+                rows = cursor.fetchall() 
+
+                teachers_data = []
+
+                for row in rows:
+                    teacher = {
+                        'id': row[0],
+                        'subject_name': row[1],
+                        'teacher_name': row[2],
+                    }
+                    teachers_data.append(teacher) 
+
+                cursor.close()
+                return teachers_data 
+            except mysql.connector.Error as err:
+                print(f"Erro ao executar a consulta: {err}")
+            finally:
+                db_connection.close()
+        else:
+            print("Não há conexão com o banco de dados.")
+
     

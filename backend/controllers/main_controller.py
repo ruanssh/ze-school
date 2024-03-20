@@ -49,3 +49,8 @@ def viewAllTeachers():
     teachers_data = Teacher().ViewAllTeachers()
 
     return jsonify({"teachers": teachers_data}), 201
+
+def viewAllSubjects():
+    subjects_data = Subject().ViewAllSubjects()
+
+    return jsonify({"subjects": subjects_data}), 201
