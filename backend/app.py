@@ -1,6 +1,11 @@
 from flask import Flask
-from controllers.main_controller import createStudentControl, createTeacherControl, createSubjectControl, viewAllStudents, viewAllTeachers, viewAllSubjects
 from flask_cors import CORS
+#students
+from controllers.Student_controller import createStudentControl, viewAllStudents, addSubjectToStudent
+#teachers
+from controllers.Teacher_controller import createTeacherControl, viewAllTeachers
+#subjects
+from controllers.Subject_controller import createSubjectControl, viewAllSubjects
 
 app = Flask(__name__)
 CORS(app) 
@@ -9,6 +14,10 @@ CORS(app)
 @app.route('/createStudent', methods=['POST'])
 def create_student():
     return createStudentControl()
+
+@app.route('/addSubjectToStudent', methods=['POST'])
+def add_subject_student():
+    return addSubjectToStudent()
 
 @app.route('/createTeacher', methods=['POST'])
 def create_teacher():

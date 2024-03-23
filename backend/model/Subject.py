@@ -1,7 +1,7 @@
 from model.db import DatabaseConnection
 import mysql.connector
 
-class Subject:
+class Subject():
     def __init__(self, subject_name=None, id_teacher=None):
         self.subject_name = subject_name
         self.id_teacher = id_teacher
