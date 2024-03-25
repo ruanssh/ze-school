@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS Subject (
 CREATE TABLE IF NOT EXISTS Subject_Student (
   id int NOT NULL AUTO_INCREMENT,
   id_student int NOT NULL,
-  id_teacher int NOT NULL,
+  id_subject int NOT NULL,
   PRIMARY KEY (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 

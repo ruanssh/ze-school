@@ -19,16 +19,22 @@ def viewAllStudents():
     return jsonify({"students": students_data}), 201
 
 def addSubjectToStudent():
-    # Supondo que request e jsonify estejam importados corretamente
     data = request.json
     
     id_student = data.get('id_student') 
     id_subject = data.get('id_subject') 
 
-    # Criando um objeto Student
     student = Student()
 
-    # Adicionando a matéria ao estudante
     student.AddSubject(id_student, id_subject)
 
     return jsonify({"mensagem": "Matéria adicionada com sucesso"}), 201
+
+def viewAllStudentsSubjects():
+    id_student = request.args.get('id_student') 
+    
+    students_data = Student().ViewStudentSubjects(id_student)
+
+    return jsonify({"subjects": students_data}), 200
+
+

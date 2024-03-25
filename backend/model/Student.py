@@ -26,9 +26,9 @@ class Student:
                 print(f"Erro ao executar a consulta: {err}")
             finally:
                 db_connection.close()
-        else:
-            print("Não há conexão com o banco de dados.")
 
+    # metodos estaticos 
+    
     @staticmethod
     def ViewAllStudents():
         db_connection = DatabaseConnection()
@@ -58,8 +58,6 @@ class Student:
                 print(f"Erro ao executar a consulta: {err}")
             finally:
                 db_connection.close()
-
-            print("Não há conexão com o banco de dados.")
     @staticmethod 
     def AddSubject(id_student, id_subject):
         db_connection = DatabaseConnection()
@@ -67,7 +65,7 @@ class Student:
             try:
                 cursor = db_connection.conn.cursor()
                 
-                sql = "INSERT INTO Subject_Student (id_student, id_teacher) VALUES (%s, %s)"
+                sql = "INSERT INTO Subject_Student (id_student, id_subject) VALUES (%s, %s)"
                 
                 cursor.execute(sql, (id_student, id_subject))
                 
@@ -79,4 +77,31 @@ class Student:
                 print(f"Erro ao executar a consulta: {err}")
             finally:
                 db_connection.close()
-        print("Não há conexão com o banco de dados.")
+    @staticmethod
+    def ViewStudentSubjects(id_student):
+        db_connection = DatabaseConnection()
+        if db_connection.conn is not None:
+            try:
+                cursor = db_connection.conn.cursor()
+
+                sql = "SELECT td.id, ts.nome FROM Subject_Student as td, Subject as ts WHERE td.id_subject = ts.id AND td.id_student = %s;"
+                cursor.execute(sql, (id_student,))
+                
+                rows = cursor.fetchall() 
+
+                students_data = []
+
+                for row in rows:
+                    student = {
+                        'id': row[0],
+                        'nome': row[1]
+                    }
+                    students_data.append(student) 
+
+                cursor.close()
+                return students_data 
+            except mysql.connector.Error as err:
+                print(f"Erro ao executar a consulta: {err}")
+            finally:
+                db_connection.close()
+

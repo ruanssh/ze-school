@@ -1,7 +1,7 @@
 from flask import Flask
 from flask_cors import CORS
 #students
-from controllers.Student_controller import createStudentControl, viewAllStudents, addSubjectToStudent
+from controllers.Student_controller import createStudentControl, viewAllStudents, addSubjectToStudent, viewAllStudentsSubjects
 #teachers
 from controllers.Teacher_controller import createTeacherControl, viewAllTeachers
 #subjects
@@ -32,12 +32,18 @@ def create_subject():
 @app.route('/students', methods=['GET'])
 def view_students():
     return viewAllStudents()
+
 @app.route('/teachers', methods=['GET'])
 def view_teachers():
     return viewAllTeachers()
+
 @app.route('/subjects', methods=['GET'])
 def view_subjects():
     return viewAllSubjects()
+
+@app.route('/viewStudentSubjects', methods=['GET'])
+def view_student_subjects():
+    return viewAllStudentsSubjects()
 
 
 if __name__ == "__main__":

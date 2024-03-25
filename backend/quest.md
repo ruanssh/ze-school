@@ -1,6 +1,6 @@
 Requisitos Mínimos:
 
-• Encapsulamento
+• Encapsulamento 
 • Herança
 • Polimorfismo
 • Interfaces e/ou Classes Abstratas

@@ -26,11 +26,9 @@ export default function CreateTeacher()
     };
     const handleOk = () => {
     setIsModalOpen(false);
-    navigate('/Teachers')
     };
     const handleCancel = () => {
     setIsModalOpen(false);
-    navigate('/Teachers')
     };
 
     const onFinish = (values) => {

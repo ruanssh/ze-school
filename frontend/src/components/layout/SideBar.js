@@ -16,7 +16,7 @@ const SideBar = (props) => {
           <h3 style={{ color: 'white', textAlign: 'center', marginTop: '16px' }}>Escolinha do Zé</h3>
         </div>
         <Menu theme="dark" defaultSelectedKeys={[props.page]} mode="inline">
-          <Menu.Item key="1" onClick={() => navigate("/")}>Inícios</Menu.Item>
+          {/* <Menu.Item key="1" onClick={() => navigate("/")}>Inícios</Menu.Item> */}
           <Menu.Item key="2" onClick={() => navigate("/Students")}>Alunos</Menu.Item>
           <Menu.Item key="4" onClick={() => navigate("/Teachers")}>Professores</Menu.Item>
           <Menu.Item key="3" onClick={() => navigate("/Subjects")}>Matérias</Menu.Item>

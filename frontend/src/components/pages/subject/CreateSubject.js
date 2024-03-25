@@ -28,11 +28,9 @@ export default function CreateSubject()
     };
     const handleOk = () => {
     setIsModalOpen(false);
-    navigate('/Teachers')
     };
     const handleCancel = () => {
     setIsModalOpen(false);
-    navigate('/Teachers')
     };
     const onChangeTeacher = (teacher_id) =>
     {

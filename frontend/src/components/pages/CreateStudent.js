@@ -25,11 +25,9 @@ export default function CreateStudent()
     };
     const handleOk = () => {
     setIsModalOpen(false);
-    navigate('/Students')
     };
     const handleCancel = () => {
     setIsModalOpen(false);
-    navigate('/Students')
     };
 
     const [date, setDate] = useState(true);
