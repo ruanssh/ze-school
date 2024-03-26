@@ -5,7 +5,7 @@ from controllers.Student_controller import createStudentControl, viewAllStudents
 #teachers
 from controllers.Teacher_controller import createTeacherControl, viewAllTeachers
 #subjects
-from controllers.Subject_controller import createSubjectControl, viewAllSubjects
+from controllers.Subject_controller import createSubjectControl, viewAllSubjects, viewAllStudentsBySubject
 
 app = Flask(__name__)
 CORS(app) 
@@ -44,6 +44,10 @@ def view_subjects():
 @app.route('/viewStudentSubjects', methods=['GET'])
 def view_student_subjects():
     return viewAllStudentsSubjects()
+
+@app.route('/viewAllStudentsBySubject', methods=['GET'])
+def view_students_by_subject():
+    return viewAllStudentsBySubject()
 
 
 if __name__ == "__main__":

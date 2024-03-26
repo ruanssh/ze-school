@@ -11,8 +11,14 @@ def createSubjectControl():
 
     return jsonify({"mensagem": "Materia criada com sucesso"}), 201
 
-
 def viewAllSubjects():
     subjects_data = Subject().ViewAllSubjects()
 
     return jsonify({"subjects": subjects_data}), 201
+
+def viewAllStudentsBySubject():
+    id_subject = request.args.get('id_subject') 
+    
+    students_data = Subject().ViewAllStudents(id_subject)
+
+    return jsonify({"students": students_data}), 200

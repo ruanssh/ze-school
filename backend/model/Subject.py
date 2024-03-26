@@ -57,5 +57,33 @@ class Subject():
                 db_connection.close()
         else:
             print("Não há conexão com o banco de dados.")
+    @staticmethod
+    def ViewAllStudents(id_subject):
+        db_connection = DatabaseConnection()
+        if db_connection.conn is not None:
+            try:
+                cursor = db_connection.conn.cursor()
+
+                sql = "SELECT ss.id, st.nome FROM Subject_Student as ss, Student as st WHERE ss.id_subject like %s and st.id = ss.id_student"
+                cursor.execute(sql, (id_subject,))
+                
+                rows = cursor.fetchall() 
+
+                students_data = []
+
+                for row in rows:
+                    student = {
+                        'id': row[0], 
+                        'nome': row[1]
+                    }
+                    students_data.append(student) 
+
+                cursor.close()
+                return students_data 
+            except mysql.connector.Error as err:
+                print(f"Erro ao executar a consulta: {err}")
+            finally:
+                db_connection.close()
+        
 
     
