@@ -1,7 +1,7 @@
 Requisitos Mínimos:
 
 • Encapsulamento 
-• Herança
+• Herança - Ok
 • Polimorfismo
 • Interfaces e/ou Classes Abstratas
 • Padrões de Projeto
