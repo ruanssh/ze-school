@@ -1,33 +1,30 @@
 from model.db import DatabaseConnection
 import mysql.connector
 
-class Teacher:
+class Teacher(DatabaseConnection):
     def __init__(self, teacher_name=None):
+        super().__init__()  
         self.teacher_name = teacher_name
         
     def CreateNewTeacher(self):
-        db_connection = DatabaseConnection()
-        if db_connection.conn is not None:
+        if self.conn is not None:
             try:
-                cursor = db_connection.conn.cursor()
-                
+                cursor = self.conn.cursor()
+                                
                 self.sql = "INSERT INTO school.Teacher (nome) VALUES (%s)"
-                
                 cursor.execute(self.sql, (self.teacher_name,))
-                
-                db_connection.conn.commit() 
+                self.conn.commit() 
                 
                 cursor.close()
                 print("Professor criado com sucesso!")
             except mysql.connector.Error as err:
                 print(f"Erro ao executar a consulta: {err}")
             finally:
-                db_connection.close()
+                self.close()
         else:
             print("Não há conexão com o banco de dados.")
             
     @staticmethod
-    # depois essa função tem que retornar as materias que esse professor da aula também.
     def ViewAllTeachers():
         db_connection = DatabaseConnection()
         if db_connection.conn is not None:
