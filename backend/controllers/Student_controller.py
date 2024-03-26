@@ -14,7 +14,7 @@ def createStudentControl():
     return jsonify({"mensagem": "Estudante criado com sucesso"}), 201
 
 def viewAllStudents():
-    students_data = Student().ViewAllStudents()
+    students_data = Student().ViewAll()
 
     return jsonify({"students": students_data}), 201
 

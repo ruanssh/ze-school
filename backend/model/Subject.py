@@ -28,7 +28,7 @@ class Subject(DatabaseConnection):
             print("Não há conexão com o banco de dados.")
     
     @staticmethod
-    def ViewAllSubjects():
+    def ViewAll():
         db_connection = DatabaseConnection()
         if db_connection.conn is not None:
             try:
