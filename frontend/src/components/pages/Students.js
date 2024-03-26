@@ -9,6 +9,8 @@ import { EyeOutlined, DownOutlined   } from '@ant-design/icons';
 import ViewStudentSubject from "./ViewStudentSubjects";
 import styles from "../layout/Datagrid.module.css"
 import AddSubject from "./AddSubject";
+import moment from 'moment';
+
 export default function Students()
 {
     const [data, setData] = useState([])
@@ -68,7 +70,7 @@ export default function Students()
     }, []); 
     const dataSource = data.map((item, index) => ({
         index: index + 1,
-        date: item.dt_nasc,
+        date: moment(item.dt_nasc).format('DD/MM/YYYY'), // Formatação da data
         name: item.nome,
         studentid: item.matricula,
         id_student: item.id

@@ -18,6 +18,8 @@ function App() {
         <Route path='/CreateTeacher' exact element={<CreateTeacher />}/>
         <Route path='/CreateSubject' exact element={<CreateSubject />}/>
 
+        <Route path='/' exact element={<Students />}/>]
+
         <Route path='/Students' exact element={<Students />}/>]
         <Route path='/Teachers' exact element={<Teachers />}/>
         <Route path='/Subjects' exact element={<Subjects />}/>
