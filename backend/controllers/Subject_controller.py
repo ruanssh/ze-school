@@ -12,7 +12,7 @@ def createSubjectControl():
     return jsonify({"mensagem": "Materia criada com sucesso"}), 201
 
 def viewAllSubjects():
-    subjects_data = Subject().ViewAllSubjects()
+    subjects_data = Subject().ViewAll()
 
     return jsonify({"subjects": subjects_data}), 201
 

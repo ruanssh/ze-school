@@ -4,7 +4,9 @@ import random
 
 class Student(DatabaseConnection):
     def __init__(self, name=None, birthdate=None):
+        
         super().__init__()  
+        
         self.student_id = random.randint(100000, 999999)
         self.name = name
         self.birthdate = birthdate
@@ -29,12 +31,10 @@ class Student(DatabaseConnection):
         else:
             print("Não há conexão com o banco de dados.")
 
-    @staticmethod
-    def ViewAll():
-        db_connection = DatabaseConnection()
-        if db_connection.conn is not None:
+    def ViewAll(self):
+        if self.conn is not None:
             try:
-                cursor = db_connection.conn.cursor()
+                cursor = self.conn.cursor()
                 sql = "SELECT id, matricula, nome, dt_nasc FROM school.Student;"
                 cursor.execute(sql)
                 
@@ -56,7 +56,8 @@ class Student(DatabaseConnection):
             except mysql.connector.Error as err:
                 print(f"Erro ao executar a consulta: {err}")
             finally:
-                db_connection.close()
+                self.close()
+                
     @staticmethod 
     def AddSubject(id_student, id_subject):
         db_connection = DatabaseConnection()

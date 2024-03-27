@@ -1,6 +1,7 @@
+from abc import ABC, abstractmethod
 import mysql.connector
 
-class DatabaseConnection:
+class DatabaseConnection(ABC):
     def __init__(self):
         self.conn = None
         self.connect()
@@ -25,3 +26,7 @@ class DatabaseConnection:
         if self.conn is not None:
             self.conn.close()
             print("Conexão fechada.")
+            
+    @abstractmethod
+    def ViewAll():
+        pass
