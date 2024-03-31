@@ -82,7 +82,7 @@ export default function CreateTeacher()
                                 },
                             ]}
                             >
-                        <Input />
+                        <Input maxLength={50}  />
 
                         </Form.Item>
                         <Form.Item  wrapperCol={{     offset: 8,       span: 16,  }}>

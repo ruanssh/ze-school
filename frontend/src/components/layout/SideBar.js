@@ -6,7 +6,6 @@ import { useNavigate } from 'react-router-dom'; // Importa o hook useNavigate
 const { Sider } = Layout;
 
 const SideBar = (props) => {
-  const [collapsed, setCollapsed] = useState(true);
   const navigate = useNavigate(); // Obtém a função de navegação
 
   return (

@@ -110,7 +110,7 @@ export default function CreateSubject()
                                 },
                             ]}
                             >
-                        <Input />
+                        <Input maxLength={50} />
                         </Form.Item>
                         <Form.Item
                             label="Professor"

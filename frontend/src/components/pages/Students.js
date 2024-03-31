@@ -120,7 +120,7 @@ export default function Students()
     return(
         <>
         <ViewStudentSubject handleOk={handleOkSubject} isModalOpen={isModalSubjectsOpen} handleCancel={handleCancelSubject} id={studentId} />
-        <AddSubject onClose={onClose} open={open} id={studentId} />
+        <AddSubject onClose={onClose} open={open} id={studentId} fetchIt={fetchAllStudents} />
         <SideBar page='2' >
             <Row justify="end">
                 <Col style={{ margin: '10px' }}>

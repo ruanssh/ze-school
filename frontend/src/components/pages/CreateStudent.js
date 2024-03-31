@@ -89,7 +89,7 @@ export default function CreateStudent()
                                 },
                             ]}
                             >
-                        <Input />
+                        <Input maxLength={50}  />
 
                         </Form.Item>
 

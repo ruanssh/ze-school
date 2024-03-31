@@ -16,9 +16,11 @@ export default function AddSubject({onClose, open, id})
     };
     const handleOk = () => {
     setIsModalOpen(false);
+    window.location.reload();
     };
     const handleCancel = () => {
     setIsModalOpen(false);
+    window.location.reload();
     };
 
     const fetchAllTeachers = async () => {
