@@ -34,7 +34,7 @@ class Student(DatabaseConnection):
     @staticmethod 
     def ViewAll():
         db_connection = DatabaseConnection()
-        if db_connection is not None:
+        if db_connection.conn is not None:
             try:
                 cursor = db_connection.conn.cursor()
                 sql = "SELECT id, matricula, nome, dt_nasc FROM school.Student;"

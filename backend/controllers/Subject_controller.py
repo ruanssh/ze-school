@@ -19,6 +19,6 @@ def viewAllSubjects():
 def viewAllStudentsBySubject():
     id_subject = request.args.get('id_subject') 
     
-    students_data = Subject().ViewAll(id_subject)
+    students_data = Subject().ViewAllStudents(id_subject)
 
     return jsonify({"students": students_data}), 200
