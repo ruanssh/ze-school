@@ -31,10 +31,12 @@ class Student(DatabaseConnection):
         else:
             print("Não há conexão com o banco de dados.")
 
-    def ViewAll(self):
-        if self.conn is not None:
+    @staticmethod 
+    def ViewAll():
+        db_connection = DatabaseConnection()
+        if db_connection is not None:
             try:
-                cursor = self.conn.cursor()
+                cursor = db_connection.conn.cursor()
                 sql = "SELECT id, matricula, nome, dt_nasc FROM school.Student;"
                 cursor.execute(sql)
                 
@@ -56,7 +58,7 @@ class Student(DatabaseConnection):
             except mysql.connector.Error as err:
                 print(f"Erro ao executar a consulta: {err}")
             finally:
-                self.close()
+                db_connection.close()
                 
     @staticmethod 
     def AddSubject(id_student, id_subject):

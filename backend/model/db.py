@@ -27,6 +27,3 @@ class DatabaseConnection(ABC):
             self.conn.close()
             print("Conexão fechada.")
             
-    @abstractmethod
-    def ViewAll():
-        pass

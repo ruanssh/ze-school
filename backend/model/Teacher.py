@@ -25,9 +25,11 @@ class Teacher(DatabaseConnection):
             print("Não há conexão com o banco de dados.")
             
     def ViewAll(self):
-        if self.conn is not None:
+        db_connection = DatabaseConnection()
+
+        if db_connection.conn is not None:
             try:
-                cursor = self.conn.cursor()
+                cursor = db_connection.conn.cursor()
 
                 sql = "SELECT id, nome FROM school.Teacher;"
                 cursor.execute(sql)
@@ -48,7 +50,7 @@ class Teacher(DatabaseConnection):
             except mysql.connector.Error as err:
                 print(f"Erro ao executar a consulta: {err}")
             finally:
-                self.close()
+                db_connection.close()
         else:
             print("Não há conexão com o banco de dados.")
 
