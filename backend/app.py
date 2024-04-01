@@ -10,6 +10,10 @@ from controllers.Subject_controller import createSubjectControl, viewAllSubjects
 app = Flask(__name__)
 CORS(app) 
 
+@app.route('/')
+def index():
+    return 'Working'
+
 # insert
 @app.route('/createStudent', methods=['POST'])
 def create_student():
