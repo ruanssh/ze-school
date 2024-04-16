@@ -1,4 +1,4 @@
-# Description
+# School Management
 
 This project is a school management application developed in Python, using Object-Oriented Programming concepts such as Polymorphism, Inheritance, and Abstraction. The core of the application is a Flask-based REST API, allowing for the registration of students, teachers, and subjects.
 
